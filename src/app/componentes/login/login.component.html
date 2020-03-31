@@ -25,7 +25,7 @@
   <div class="jumbotron" style="padding:50px;">
     <form action="return true;">
       <div class="imgcontainer">
-        <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
+        <img src="./assets/imagenes/login.webp" alt="Avatar" class="avatar" max-width="104" >
       </div>
 
       <div class="container">
@@ -43,11 +43,15 @@
             </div>
         </div>
        
+        <div *ngIf="errorLoguin" class="alert alert-danger text-center" role="alert">
+         La clave o el usuario ingresado son incorrectos
+        </div>
+
         <input type="checkbox" checked="checked"> Recordar mis datos
       </div>
 
       <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancelar</button>
+        <button type="button" class="cancelbtn" routerLink="/Principal">Cancelar</button>
         <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
         <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
       </div>

@@ -1,2 +1,15 @@
 export class JuegoAnagrama {
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }

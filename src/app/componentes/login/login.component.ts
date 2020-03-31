@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   progresoMensaje="esperando..."; 
   logeando=true;
   ProgresoDeAncho:string;
-
+  errorLoguin=false;
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
   constructor(
@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
   Entrar() {
     if (this.usuario === 'admin' && this.clave === 'admin') {
       this.router.navigate(['/Principal']);
+    }else{
+      this.errorLoguin=true;
     }
   }
 
