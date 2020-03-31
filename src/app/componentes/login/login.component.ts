@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/Principal']);
     }
   }
+
+  
   MoverBarraDeProgreso() {
     
     this.logeando=false;

@@ -4,26 +4,29 @@
 
 
 <form name="juego">
-  <h1>esti es ek de aritmetica</h1>
-<!-- <ul>
-   <li>
-   Primer número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
   
+<ul>
+   <li>
+   Primer número: <input *ngIf="ocultarVerificar"  placeholder="Primer numero" name="primerNumero" type="text" class="form-control" style="width:50%" readonly/>
+                  <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.primerNumero" placeholder="Primer numero" name="primerNumero" type="text" class="form-control" style="width:50%" readonly/>
   </li>
   <li>
-   Operador: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
+   Operador: <input *ngIf="ocultarVerificar"  placeholder="operador" name="operador" type="text" class="form-control" style="width:50%" readonly/>
+    <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.operador" placeholder="operador" name="operador" type="text" class="form-control" style="width:50%" readonly/>
     
   </li>
   <li>
-   Segundo número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
+   Segundo número: <input *ngIf="ocultarVerificar" placeholder="Segundo numero" name="segundoNumero" type="text" class="form-control" style="width:50%" readonly/>
+                  <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.segundoNumero" placeholder="Segundo numero" name="segundoNumero" type="text" class="form-control" style="width:50%" readonly/>
     
   </li>
   <li>
-    Respuesta: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
+    Respuesta: <input [(ngModel)]="nuevoJuego.valorIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
+  
      
    </li>
   <li>
-    <h2 [hidden]="ocultarVerificar" ><button (click)="verificar()" class="btn btn-success btn-lg">Verificar {{Tiempo}} </button></h2>
+    <h2 [hidden]="ocultarVerificar" ><button (click)="verificar()"  disabled class="btn btn-success btn-lg">Verificar {{Tiempo}} </button></h2>
   </li>
   <li>
     <h2 [hidden]="!ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn btn-info btn-lg">Nuevo</button></h2>
@@ -34,6 +37,6 @@
     <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
     <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
   </li>
-</ul> -->
+</ul>
 
 </form>

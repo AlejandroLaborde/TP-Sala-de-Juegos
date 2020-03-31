@@ -51,12 +51,9 @@ export class RegistroComponent implements OnInit {
         title: 'Se registro con Exito',
         text: 'Recuerde que su email es su usuario.',
         showConfirmButton: true,
-      }).finally(
-
-        () => document.getElementById('id01').style.display = 'none'
-      );
+      })
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/Login']);
   }
 
 }

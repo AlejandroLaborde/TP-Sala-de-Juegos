@@ -42,11 +42,7 @@ export class JugadoresService {
       )
       .catch(errror=>{console.log("error")
       
-
-
     return this.filtrado;
-      
-
     });
   }
 
