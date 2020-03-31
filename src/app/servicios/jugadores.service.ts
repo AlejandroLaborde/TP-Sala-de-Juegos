@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ArchivosJugadoresService}from './archivos-jugadores.service'
+import { Jugador } from '../clases/jugador';
 @Injectable()
 export class JugadoresService {
 
@@ -8,9 +9,16 @@ export class JugadoresService {
    // this.peticion = this.miHttp.traerJugadores();
 //    this.peticion = this.miHttp.httpGetO("https://restcountries.eu/rest/v2/all");
   }
+  
+  filtrado:any;
 
-
-filtrado:any;
+  public altaJugador( jugador: Jugador ) {
+    return this.miHttp.newJugador(jugador).then( resp =>{
+      return resp;
+    }).catch(err=>{
+      console.log(err);
+    });
+  }
 
   traertodos(ruta : string,filtro: string) 
   {

@@ -11,25 +11,39 @@
   <button  class="cancelbtn"  routerLink="/Principal" style="width:auto;">No acepto</button>
   <div id="id01" class="modal">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-    <form class="modal-content animate" >
+    
+    <form class="modal-content animate" [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
       <div class="container">
         <label><b>Email</b></label>
-        <input type="text" placeholder="Ingresa tu correo" name="email" required>
+        <input type="text" placeholder="Ingresa tu correo" name="email"  formControlName="email"  >
   
+        <label><b>Sexo</b></label>
+        <input type="text" placeholder="ingrese M o F " name="sexo"  formControlName="sexo"  >
+
+        <label><b>Cuit</b></label>
+        <input type="text" placeholder="Ingrese un cuit valido ej: 20-xxxxxxxx-3" name="cuit"  formControlName="cuit"  >
+        
         <label><b>Clave</b></label>
-        <input type="password" placeholder="Aca la clave" name="psw" required>
+        <input type="password" placeholder="Aca la clave" name="psw" formControlName="clave">
   
         <label><b>Repita la clave</b></label>
-        <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" required>
+        <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" formControlName="copyClave" >
+        
+        <div class="alert alert-danger text-center" *ngIf="formInvalido" role="alert">
+          Las claves ingresadas no coinciden, por favor ingrese denuevo
+        </div>
+
         <input type="checkbox" checked="checked">Recordar mis datos
         <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p>
   
         <div class="clearfix">
           <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
-          <button type="submit" class="signupbtn">Registrarme</button>
+          <button type="submit" *ngIf="formRegistro.valid" class="signupbtn">Registrarme</button>
         </div>
       </div>
+      
     </form>
+
   </div>
   
   <script>
