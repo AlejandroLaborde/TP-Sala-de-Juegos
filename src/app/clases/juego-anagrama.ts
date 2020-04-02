@@ -1,4 +1,4 @@
-import { Juego } from './juego';
+import { Juego } from '../clases/juego';
 
 export class JuegoAnagrama extends Juego{
 
