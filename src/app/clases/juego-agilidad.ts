@@ -1,4 +1,4 @@
-export class JuegoAgilidad {
+export class JuegoAgilidad{
 
     primerNumero: number;
     segundoNumero: number;
@@ -7,12 +7,11 @@ export class JuegoAgilidad {
     operador: string;
     private resultado: number;
     gano: boolean;
-    
+
 
     constructor(){
-      
+
         this.seteaValoresJuego(this.getRandomOperator());
-        
     }
 
     seteaValoresJuego( operador: string){

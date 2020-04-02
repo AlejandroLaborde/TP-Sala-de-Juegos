@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { JuegoAnagrama } from '../../clases/juego-anagrama';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-anagrama',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnagramaComponent implements OnInit {
 
-  constructor() { }
+  intentos = 5;
+  juego: JuegoAnagrama;
+  constructor() { 
+    this.juego=new JuegoAnagrama(3);
+    console.log(this.juego.palabraAOrdenar);
+  }
 
   ngOnInit() {
   }
 
+  verificar() {
+    if(this.juego.verificar()){
+      Swal.fire({
+        title:'Ganaste!!'
+      })
+    }
+  }
 }

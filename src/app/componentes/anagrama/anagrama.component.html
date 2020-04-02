@@ -1,3 +1,19 @@
-<p>
-  anagrama works!
-</p>
+
+
+
+
+
+
+
+<div class="card">
+  <div class="card-header text-center">
+   ANAGRAMA
+  </div>
+  <div class="card-body">
+    <p class="card-text">Debe ordenar la palabra, tiene {{juego.intentos}} intentos</p>
+    <h5 class="card-title">{{juego.palabraAOrdenar}}</h5>
+    <input type="text" class="form-control" placeholder="Ingrese una palabra" [(ngModel)]="juego.palabraIngresada">
+
+    <button class="btn btn-success" (click)="verificar()" >Verificar...</button>
+  </div>
+</div>
