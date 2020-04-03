@@ -22,3 +22,15 @@ height: 70px;
 h3{
     color: black;
 }
+
+.card:hover {
+	top: -3px;
+	left: -3px;
+  box-shadow: 3px 3px 15px 0px rgba(82, 82, 82, 0.85);
+}
+.card:active {
+	top: 2px;
+	left: 2px;
+	background-color: #C9F1D3;
+	box-shadow: inset 0 0 10px rgba(82, 82, 82, 0.85);
+}

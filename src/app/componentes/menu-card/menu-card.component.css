@@ -2,7 +2,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
-    max-width: 300px;
+    max-width: 350px;
     height: 100%;
     margin: 10px;
     padding-bottom: 10px;
@@ -19,8 +19,6 @@ img {
 }/* Add some padding inside the card container */
 
 
-
-
 .button{
     margin-left: 1px;
     display: inline-block;
@@ -34,7 +32,7 @@ img {
     background-color: #4CAF50;
     border: none;
     border-radius: 15px;
-    box-shadow: 0 9px #999;
+    
 
     border: none;
     outline: 0;
@@ -44,7 +42,7 @@ img {
    /* background-color: #000;*/
     text-align: center;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
   }
   
   .button:hover {background-color: #3e8e41}
@@ -55,3 +53,19 @@ img {
     transform: translateY(4px);
   }
 
+  .card:hover {
+    top: -3px;
+    left: -3px;
+    box-shadow: 3px 3px 15px 0px rgba(82, 82, 82, 0.85);
+  }
+  .card:active {
+    top: 2px;
+    left: 2px;
+    background-color: #C9F1D3;
+    box-shadow: inset 0 0 10px rgba(82, 82, 82, 0.85);
+  }
+
+
+  h1{
+    font-family: fantasy;
+  }
