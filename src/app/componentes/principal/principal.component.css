@@ -3,6 +3,7 @@ width: 80px;
 height: 70px;
 }
 
+
 .hero-text {
     text-align: center;
     position: absolute;
@@ -10,4 +11,14 @@ height: 70px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #100000;
-    }
+}
+
+.fondo{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+h3{
+    color: black;
+}

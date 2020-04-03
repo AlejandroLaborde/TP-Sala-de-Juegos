@@ -1,78 +1,50 @@
-<app-cabecera>  </app-cabecera>
+<div class="fondo">
+  <app-cabecera></app-cabecera>
 
+  <div class="container" >
+    <div class="row row-cols-1 row-cols-md-4" style="margin-top: 30px;">
 
+      <div class="col mb-4">
+        <div class="card" routerLink="/Juegos">
+          <img src="../../../assets/imagenes/juegos.jpg" class="card-img-bottom" alt="...">
+          <div class="card-body">
+            <h3 class="card-title text-center">Juegos</h3>
+            <p class="card-text text-center">El método lúdico es un conjunto de estrategias diseñadas para crear un ambiente de armonía en los estudiantes que están inmersos en el proceso de aprendizaje. Este método busca que los alumnos se apropien de los temas impartidos por los docentes utilizando el juego.</p> 
+            
+          </div>
+        </div>
+      </div>
 
- 
-<div class="container" >
-   
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-danger">
-           
-                <div class="media-body">
-                    <div class="hero-text">
-                        <h4 >Menú Principal</h4>
-                    </div>
-                 </div>
-               
-             
-          </li>
-        <li class="list-group-item list-group-item-success">
-          <a routerLink="/Juegos">
-            <div class="media">
-              <div class="media-left">
-                    <img src="./assets/imagenes/juegos.jpg" class="media-object imagenDeMenu" >
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Juegos</h4>
-                <p>El método lúdico es un conjunto de estrategias diseñadas para crear un ambiente de armonía en los estudiantes que están inmersos en el proceso de aprendizaje. Este método busca que los alumnos se apropien de los temas impartidos por los docentes utilizando el juego.</p>
-              </div>
-             
-            </div> 
-          </a>
-        </li>
-        <li class="list-group-item list-group-item-info">
-            <a routerLink="/Listado">
-              <div class="media">
-                  <div class="media-left">
-                      <img src="./assets/imagenes/resultados.jpg" class="media-object imagenDeMenu" >
-                    </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Listados de resultados</h4>
-                  <p>Los listados de los resultados con ordenamiento y busqueda</p>
-                </div>
-                
-              </div> 
-            </a>
-          </li>
-        <li class="list-group-item list-group-item-warning">
-          <a routerLink="/Juegos">
-            <div class="media">
-                <div class="media-left">
-                    <img src="./assets/imagenes/configuracion.jpg" class="media-object imagenDeMenu" >
-                  </div>
-              <div class="media-body">
-                <h4 class="media-heading">Configuraci&oacute;n</h4>
-                <p>Ajustes de la aplicacion y los métodos de autentificación</p>
-              </div>
-             
-            </div> 
-          </a>
-        </li>
-        <li class="list-group-item list-group-item-warning">
-          <a routerLink="/Jugadores">
-            <div class="media">
-                <div class="media-left">
-                    <img src="./assets/imagenes/jugadores.jpg" class="media-object imagenDeMenu" >
-                  </div>
-              <div class="media-body">
-                <h4 class="media-heading">Jugadores</h4>
-                <p>Listado de jugadores</p>
-              </div>
-             
-            </div> 
-          </a>
-        </li>
-       
-        
-      </ul>
+      <div class="col mb-4">
+        <a class="card" routerLink="/Listado">
+          <img src="../../../assets/imagenes/resultados.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title text-center">Resultados</h3>
+            <p class="card-text text-center">Los listados de los resultados con ordenamiento y busqueda</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col mb-4">
+        <a class="card" routerLink="/Juegos">
+          <img src="../../../assets/imagenes/configuracion.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title text-center">Configuraci&oacute;n</h3>
+            <p class="card-text text-center">Ajustes de la aplicacion y los métodos de autentificación</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col mb-4">
+        <a class="card" routerLink="/Jugadores">
+          <img src="../../../assets/imagenes/jugadores.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title text-center">Jugadores</h3>
+            <p class="card-text text-center">Listado de jugadores</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
 </div>
