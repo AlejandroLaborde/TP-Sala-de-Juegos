@@ -1,4 +1,6 @@
-export class JuegoAgilidad{
+import { Juego } from './juego';
+
+export class JuegoAgilidad extends Juego{
 
     primerNumero: number;
     segundoNumero: number;
@@ -6,17 +8,15 @@ export class JuegoAgilidad{
     valorIngresado: number;
     operador: string;
     private resultado: number;
-    gano: boolean;
 
 
     constructor(){
-
+        super('Agilidad',false);
         this.seteaValoresJuego(this.getRandomOperator());
     }
 
     seteaValoresJuego( operador: string){
 
-        this.gano=false;
         this.operador = operador;
         if(operador === "/"){
             do{
@@ -53,14 +53,14 @@ export class JuegoAgilidad{
     }
 
 
-    verificarSiGano(): boolean{
+    public verificar(): boolean{
 
         if(this.valorIngresado == this.resultado){
-            this.gano=true;
+            this.gano = true;
             return true;
         }else
         {
-            this.gano=false;
+            this.gano = false;
             return false;
         }
     }

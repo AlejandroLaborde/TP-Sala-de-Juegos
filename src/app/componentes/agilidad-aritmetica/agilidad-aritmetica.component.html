@@ -1,42 +1,64 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<!-- index.html -->
 
 
-<form name="juego">
-  
-<ul>
-   <li>
-   Primer número: <input *ngIf="ocultarVerificar"  placeholder="Primer numero" name="primerNumero" type="text" class="form-control" style="width:50%" readonly/>
-                  <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.primerNumero" placeholder="Primer numero" name="primerNumero" type="text" class="form-control" style="width:50%" readonly/>
-  </li>
-  <li>
-   Operador: <input *ngIf="ocultarVerificar"  placeholder="operador" name="operador" type="text" class="form-control" style="width:50%" readonly/>
-    <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.operador" placeholder="operador" name="operador" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-   Segundo número: <input *ngIf="ocultarVerificar" placeholder="Segundo numero" name="segundoNumero" type="text" class="form-control" style="width:50%" readonly/>
-                  <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.segundoNumero" placeholder="Segundo numero" name="segundoNumero" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-    Respuesta: <input [(ngModel)]="nuevoJuego.valorIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
-  
-     
-   </li>
-  <li>
-    <h2 [hidden]="ocultarVerificar" ><button (click)="verificar()"  disabled class="btn btn-success btn-lg">Verificar {{Tiempo}} </button></h2>
-  </li>
-  <li>
-    <h2 [hidden]="!ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn btn-info btn-lg">Nuevo</button></h2>
-  </li>
-  <li>
-    <h2><p><i class="fa fa-spinner fa-spin"></i>Esperando numero...</p></h2>
+<div class="container">
 
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-  </li> 
-</ul>
+  <div class="card text-center">
+    <div class="card-header">
+      <h4>Juego de Aritmetica y agilidad mental</h4>
+      
+    </div>
+    <div class="card-body text-left">
+      <form name="juego">
+          <div class="row">
+            <div class="col col-md-4">
+              <h5>
+                Primer número: <input *ngIf="ocultarVerificar"  placeholder="Primer numero" name="primerNumero" type="text" class="form-control" readonly/>
+                               <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.primerNumero" placeholder="Primer numero" name="primerNumero" type="text" class="form-control" readonly/>
+               </h5>
+            </div>
+            <div class="col col-md-4">
+              <h5>
+                Operador: <input *ngIf="ocultarVerificar"  placeholder="operador" name="operador" type="text" class="form-control"  readonly/>
+                 <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.operador" placeholder="operador" name="operador" type="text" class="form-control"  readonly/>
+               </h5>
+            </div>
+            <div class="col col-md-4">
+              <h5>
+                Segundo número: <input *ngIf="ocultarVerificar" placeholder="Segundo numero" name="segundoNumero" type="text" class="form-control"  readonly/>
+                               <input *ngIf="!ocultarVerificar" [(ngModel)]="nuevoJuego.segundoNumero" placeholder="Segundo numero" name="segundoNumero" type="text" class="form-control"  readonly/>
+               </h5>
+            </div>
+          </div>
+            
+            <div class="row" style="margin-bottom: 10px;">
+              <div class="col">
+                <h5>Respuesta: </h5>
+                  <input [(ngModel)]="nuevoJuego.valorIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" />
+              </div>
+            </div>
+             
+            
+              <h5>
+                <h2 [hidden]="ocultarVerificar" ><button (click)="verificarResultado()"  disabled class="btn btn-success btn-block">Verificar {{Tiempo}} </button></h2>
+              </h5>
+              <h5>
+                <h2 [hidden]="!ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn btn-info btn-block">Nuevo Juego </button></h2>
+              </h5>
+          
+        </form>
+    </div>
+    <div class="card-footer text-muted">
+      Juego editado por Alejandro Laborde Parodi
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br><br>
+  <br>
+  <br><br>
+</div>
 
-</form>
+

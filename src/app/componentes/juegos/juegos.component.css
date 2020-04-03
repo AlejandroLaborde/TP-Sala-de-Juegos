@@ -1,10 +1,15 @@
 h1{
     
-    color: cyan;
+    color: wheat;
     font-family: cursive,
     
 }
 
+
 .fondo{
-    background-color: black;
+    background-color:black;
+    width:100%;
+    height:100%;
+    left:0px;
+    z-index:1000;
 }

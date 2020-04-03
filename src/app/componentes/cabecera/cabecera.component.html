@@ -1,21 +1,30 @@
 
 
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" >
     <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
       <img src="../../../assets/imagenes/quiensoy.jpg" width="30" height="30" class="d-inline-block align-top" alt="">     <span class="caret"></span>
     </button>
-    Alejandro Laborde Parodi
+    
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
       <a class="dropdown-item" href="https://github.com/AlejandroLaborde">en GitHub <i class="fa fa-github"></i></a>
       <a class="dropdown-item" routerLink="/QuienSoy">Quien Soy? <i class="fa fa-user"></i></a>
     </ul>
   </a>
-  <form class="form-inline">
-    <button class="btn btn-outline-success separacion"  routerLink="/Login" type="button">Ingresar</button>
-    <button class="btn btn-outline-danger separacion" routerLink="/Registro" type="button">Registrarse</button>
-  </form>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline">
+      <button class="btn btn-outline-success separacion"  routerLink="/Login" type="button">Ingresar</button>
+      <button class="btn btn-outline-danger separacion" routerLink="/Registro" type="button">Registrarse</button>
+    </form>
+  </div>
 </nav>
+
 
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -37,9 +46,3 @@
   </a>
 </div>
 
-
-<!-- <div class="panel panel-default">
-  <div class="hero-text">
-      <h1 style="font-size:50px">Sala de Juegos</h1>
-  </div>
-</div> -->

@@ -3,6 +3,7 @@ import { JuegoAgilidad } from '../../clases/juego-agilidad'
 
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-agilidad-aritmetica',
   templateUrl: './agilidad-aritmetica.component.html',
@@ -23,11 +24,11 @@ export class AgilidadAritmeticaComponent implements OnInit {
   }
 
    constructor() {
-   
+
     this.ocultarVerificar=true;
     this.Tiempo=5; 
     this.nuevoJuego = new JuegoAgilidad();
-    console.info("Inicio agilidad");  
+
   }
 
   NuevoJuego() {
@@ -40,18 +41,33 @@ export class AgilidadAritmeticaComponent implements OnInit {
       console.log("llego", this.Tiempo);
       if(this.Tiempo==0 ) {
         clearInterval(this.repetidor);
-        this.verificar();
-        this.ocultarVerificar=true;
+        this.verificarResultado();
+        this.ocultarVerificar = true;
         this.Tiempo=5;
       }
       }, 900);
 
   }
 
-  verificar()
+  verificarResultado()
   {
 
-    console.log(this.nuevoJuego.verificarSiGano());
+    if(this.nuevoJuego.verificar()){
+      Swal.fire({
+        icon:'success',
+        iconHtml:'<i class="fa fa-thumbs-up"></i>',
+        title: 'Felicidades, ha gandado!'
+      })
+    }else{
+      Swal.fire({
+        icon: "error",
+        iconHtml:'<i class="fa fa-thumbs-down"></i>',
+        title: 'Oops!! has fallado!',
+        text: "No te desanimes! Seguí intentando!"
+        
+      })
+    }
+
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
   }  
