@@ -1,8 +1,7 @@
 
 form {
-    border: 10px solid #f1f1f1;
+    border: 10px solid green;
     padding: 10px;
-    background:gray;
 }
 
 input[type=text], input[type=password] {
@@ -21,7 +20,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
 }
 
 button:hover {

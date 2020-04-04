@@ -10,21 +10,47 @@ import Swal from 'sweetalert2';
 })
 export class AnagramaComponent implements OnInit {
 
-  intentos = 5;
   juego: JuegoAnagrama;
+  nuevoJuego = true;
   constructor() { 
     this.juego=new JuegoAnagrama(3);
-    console.log(this.juego.palabraAOrdenar);
+    
   }
 
   ngOnInit() {
   }
 
-  verificar() {
-    if(this.juego.verificar()){
+  nuevaPalabra(){
+    this.juego = new JuegoAnagrama(3);
+    this.nuevoJuego = false;
+  }
+
+  resetearValores(){
+    this.nuevoJuego = true;
+    this.juego.intentos = 3;
+  }
+
+  verificar() { 
+    if ( this.juego.verificar() ) {
       Swal.fire({
-        title:'Ganaste!!'
-      })
+        icon: 'success',
+        iconHtml:'<i class="fa fa-thumbs-up"></i>',
+        title: 'Felicidades, ha gandado!'
+      });
+      this.resetearValores();
+    }else {
+      if ( this.juego.intentos === 0 ) {
+        Swal.fire({
+          icon: 'error',
+          iconHtml: '<i class="fa fa-thumbs-down"></i>',
+          title: 'Oops!! has fallado!',
+          text: 'No te desanimes! Seguí intentando!'
+        });
+        this.resetearValores();
+      }
     }
+    this.juego.palabraIngresada="";
   }
 }
+
+
