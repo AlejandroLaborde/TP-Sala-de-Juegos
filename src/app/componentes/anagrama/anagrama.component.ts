@@ -12,6 +12,8 @@ export class AnagramaComponent implements OnInit {
 
   juego: JuegoAnagrama;
   nuevoJuego = true;
+  mensajeError=false;
+
   constructor() { 
     this.juego=new JuegoAnagrama(3);
     
@@ -39,6 +41,7 @@ export class AnagramaComponent implements OnInit {
       });
       this.resetearValores();
     }else {
+      this.visibilidadMensajeError();
       if ( this.juego.intentos === 0 ) {
         Swal.fire({
           icon: 'error',
@@ -50,6 +53,11 @@ export class AnagramaComponent implements OnInit {
       }
     }
     this.juego.palabraIngresada="";
+  }
+
+  visibilidadMensajeError(){
+    this.mensajeError=true;
+    setTimeout(()=>{this.mensajeError=false},1500);    
   }
 }
 

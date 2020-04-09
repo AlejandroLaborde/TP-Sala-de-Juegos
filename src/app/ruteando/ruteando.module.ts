@@ -22,6 +22,7 @@ import { ListadoDePaisesComponent } from '../componentes/listado-de-paises/lista
 import { MapaDeGoogleComponent } from '../componentes/mapa-de-google/mapa-de-google.component'
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
+import { PiedraPapelTijeraComponent } from '../componentes/adivina-piedra-papel-tijera/piedra-papel-tijera.component';
 
 
 // declaro donde quiero que se dirija
@@ -41,6 +42,7 @@ component: JuegosComponent ,
 children:
       [{path: '' , component: MenuCardComponent},
       {path: 'Adivina' , component: AdivinaElNumeroComponent},
+      {path: 'Piedra_papel_tijera' , component: PiedraPapelTijeraComponent},
       {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
       {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
       {path: 'Anagrama' , component: AnagramaComponent},
