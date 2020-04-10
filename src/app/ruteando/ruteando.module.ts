@@ -23,6 +23,7 @@ import { MapaDeGoogleComponent } from '../componentes/mapa-de-google/mapa-de-goo
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { PiedraPapelTijeraComponent } from '../componentes/adivina-piedra-papel-tijera/piedra-papel-tijera.component';
+import { AgilidadTatetiComponent } from '../componentes/agilidad-tateti/agilidad-tateti.component';
 
 
 // declaro donde quiero que se dirija
@@ -46,6 +47,7 @@ children:
       {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
       {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
       {path: 'Anagrama' , component: AnagramaComponent},
+      {path: 'Tateti' , component: AgilidadTatetiComponent},
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent}]
 },
 {path: '**' , component: ErrorComponent},
