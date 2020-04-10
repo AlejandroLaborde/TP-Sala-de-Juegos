@@ -2,7 +2,7 @@ import { Juego } from '../clases/juego';
 
 export class JuegoAnagrama extends Juego{
 
-    private palabras: string[];
+    private palabras: string[] = [ 'palabra', 'anagrama', 'programador', 'auto' , 'casa' ];
     palabraAOrdenar: string;
     private palabraSecreta: string;
     palabraIngresada: string;
@@ -30,8 +30,8 @@ export class JuegoAnagrama extends Juego{
     }
     
     private getPalabraAOrdenar(): string{
-        this.palabraSecreta='palabra';
-        return this.desordenaPalabra('palabra');
+        this.palabraSecreta=this.palabras[Math.floor(Math.random() * this.palabras.length)];
+        return this.desordenaPalabra(this.palabraSecreta);
     }
 
     private desordenaPalabra( palabra: string ):string{

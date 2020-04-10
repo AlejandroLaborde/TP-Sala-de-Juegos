@@ -6,12 +6,43 @@
 
 <div class="container">
 
-   
+    <div class="card text-center">
+        <div class="card-header">
+          <h4>Piedra, Papel o Tijera</h4>
+          
+        </div>
+        <div *ngIf="!nuevoJuego" class="card-body text-center">
+            <div class="fila">
+                <div class="columna">
+                    <h4>Elegir una opción</h4>
+                    <img class="imagen" *ngIf="!seleccionadoPiedra" (click)="eleccion('piedra')" src="../../../assets/imagenes/piedra.png" alt="">
+                    <img class="imagen" *ngIf="!seleccionadoPapel" (click)="eleccion('papel')" src="../../../assets/imagenes/papel.png" alt="">
+                    <img class="imagen" *ngIf="!seleccionadoTijera" (click)="eleccion('tijera')" src="../../../assets/imagenes/tijera.png" alt="">
+
+                </div>
+
+                <div class="columna">
+                    <h4>Oponente (PC)</h4>
+                    <img class="imagen invierte" *ngIf="!seleccionadoPiedraPC" src="../../../assets/imagenes/piedra.png" alt="">
+                    <img class="imagen invierte" *ngIf="!seleccionadoPapelPC"  src="../../../assets/imagenes/papel.png" alt="">
+                    <img class="imagen invierte" *ngIf="!seleccionadoTijeraPC" src="../../../assets/imagenes/tijera.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a *ngIf="nuevoJuego" (click)="comenzar()" class="animated-button1" ><span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Comenzar
+            </a>
+        </div>
+        
+        <div class="card-footer text-muted">
+          Juego editado por Alejandro Laborde Parodi
+        </div>
+      </div>
     
-
-
-
-
-
     
 </div>
+
