@@ -49,6 +49,7 @@ img.avatar {
 
 .container {
     padding: 16px;
+    width: 90%;
 }
 
 span.psw {
@@ -61,6 +62,9 @@ span.psw {
     span.psw {
        display: block;
        float: none;
+    }
+    .container{
+        padding: 16px;
     }
     .cancelbtn {
        width: 100%;
