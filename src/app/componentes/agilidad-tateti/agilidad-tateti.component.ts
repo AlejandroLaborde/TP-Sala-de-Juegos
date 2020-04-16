@@ -106,7 +106,6 @@ export class AgilidadTatetiComponent implements OnInit {
          
           if(this.nuevoJuego.verificar()==null){
             Swal.fire({
-              position: 'bottom',
               icon:'warning',
               iconHtml:'<i class="fa fa-thumbs-up"></i>',
               title: 'Empate!! Vuelve a jugar!',
@@ -115,14 +114,12 @@ export class AgilidadTatetiComponent implements OnInit {
           }else{
             if(this.nuevoJuego.verificar()){
               Swal.fire({
-                position: 'bottom',
                 icon:'success',
                 iconHtml:'<i class="fa fa-thumbs-up"></i>',
                 title: 'Felicidades, ha gandado!'
               }).then(()=>{this.visibilidadComenzar=true})
             }else{
               Swal.fire({
-                position: 'bottom',
                 icon: "error",
                 iconHtml:'<i class="fa fa-thumbs-down"></i>',
                 title: 'Oops!! has fallado!',

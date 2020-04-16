@@ -54,6 +54,8 @@ import { InputJugadoresComponent } from './componentes/input-jugadores/input-jug
 import { SexoPipe } from './pipes/sexo.pipe';
 import { PiedraPapelTijeraComponent } from './componentes/adivina-piedra-papel-tijera/piedra-papel-tijera.component';
 import { AgilidadTatetiComponent } from './componentes/agilidad-tateti/agilidad-tateti.component';
+import { JuegoDadosComponent } from './componentes/juego-dados/juego-dados.component';
+import { JuegoDados } from './clases/juego-dados';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import { AgilidadTatetiComponent } from './componentes/agilidad-tateti/agilidad-
     RegistroComponent,
     MenuCardComponent,
     CabeceraComponent,
+    JuegoDadosComponent,
     QuienSoyComponent,
     AnagramaComponent,
     ListadoDePaisesComponent,
@@ -81,7 +84,8 @@ import { AgilidadTatetiComponent } from './componentes/agilidad-tateti/agilidad-
     InputJugadoresComponent,
     SexoPipe,
     PiedraPapelTijeraComponent,
-    AgilidadTatetiComponent
+    AgilidadTatetiComponent,
+    JuegoDadosComponent
   ],
   imports: [
     BrowserModule,
