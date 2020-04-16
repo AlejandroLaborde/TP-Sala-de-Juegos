@@ -1,0 +1,59 @@
+
+
+<div class="container">
+
+  <div class="card text-center">
+    <div class="card-header">
+      <h4>Juego 21 - Dados</h4>
+    </div>
+
+
+    <div *ngIf="!nuevoJuego" class="card-body text-center">
+
+    </div>
+    <div class="d-flex justify-content-center">
+
+      <div class="container" style="text-align: center;">
+
+        <div *ngIf="!visibilidadComenzar">
+          <div class="fila">
+            <div class="columna">
+              
+              <h3 *ngIf="nuevoJuego.acumUsuario">Puntaje Actual: {{nuevoJuego.acumUsuario}}</h3>
+              <img class="imagen"   [src]=this.dado1 width="15%">
+              <img class="imagen"   [src]=this.dado2 width="15%">
+            </div>
+             
+           
+          </div>
+          
+          
+          <form class="centro" name="juego">
+            <h2 *ngIf="tirarDados"><button (click)="Desarrollo()" class="btn btn-success btn-lg">Tirar Dados!</button>
+            </h2>
+            <h2 *ngIf="plantarse"><button (click)="Resolucion()" class="btn btn-success btn-lg">Plantarse!</button></h2>
+            <h2 *ngIf="visibilidadComenzar"><button (click)="comenzar()" class="btn btn-success btn-lg">Jugar de nuevo!</button></h2>
+          </form>
+
+          
+        </div>
+
+
+        
+        <a *ngIf="visibilidadComenzar" (click)="comenzar()" class="animated-button1"><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Comenzar
+        </a>
+
+
+        <div class="card-footer text-muted">
+          Juego editado por Alejandro Laborde Parodi
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

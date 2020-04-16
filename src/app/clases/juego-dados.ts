@@ -1,4 +1,5 @@
 import { Juego } from './juego';
+import { Jugador } from './jugador';
 
 export class JuegoDados extends Juego {
     
@@ -19,9 +20,9 @@ export class JuegoDados extends Juego {
 
     repetidor: any;
 
-    constructor()
+    constructor( )
     {
-        super("Juego 21 con Dados")
+        super("Juego 21 con Dados");
         this.acumUsuario=0;
         this.acumIA = 0;
     
@@ -38,11 +39,12 @@ export class JuegoDados extends Juego {
         this.segundoDadoUsuario = Math.floor((Math.random()* 6) + 1);
     
         this.acumUsuario = this.acumUsuario + this.primerDadoUsuario+this.segundoDadoUsuario;
-        console.log("primer dado: "+this.primerDadoUsuario+" "
-                    +"segundo dado: "+this.segundoDadoUsuario+" "
-                    +"El acumulador va: "+this.acumUsuario+" "
-                    +"El usuario tiro: "+this.cantDadosTiradosUsuario
-                    +" veces");
+
+        // console.log("primer dado: "+this.primerDadoUsuario+" "
+        //             +"segundo dado: "+this.segundoDadoUsuario+" "
+        //             +"El acumulador va: "+this.acumUsuario+" "
+        //             +"El usuario tiro: "+this.cantDadosTiradosUsuario
+        //             +" veces");
              
     }
 
@@ -53,80 +55,57 @@ export class JuegoDados extends Juego {
         this.segundoDadoIA = Math.floor((Math.random()* 6) + 1);
     
         this.acumIA = this.acumIA + this.primerDadoIA+this.segundoDadoIA;
-        console.log("primer dado IA: "+this.primerDadoIA+" "
-                    +"segundo dado IA: "+this.segundoDadoIA+" "
-                    +"El acumulador va: "+this.acumIA+" "
-                    +"IA tiro: "+this.cantDadosTiradosIA
-                    +" veces");
-            
+        // console.log("primer dado IA: "+this.primerDadoIA+" "
+        //             +"segundo dado IA: "+this.segundoDadoIA+" "
+        //             +"El acumulador va: "+this.acumIA+" "
+        //             +"IA tiro: "+this.cantDadosTiradosIA
+        //             +" veces");
     }
-
-
-
-
-    private Mensajes(){}
-
 
     public verificar() {
     
-        if(this.acumUsuario<=21 && this.cantDadosTiradosUsuario <3)
-            {
+        if(this.acumUsuario<=21 && this.cantDadosTiradosUsuario <3){
                 
-                this.estadoUsuario = "enCurso"
-                return true; 
-                //Puede seguir tirando. 
-    
-            }else if(this.acumUsuario<=21 && this.cantDadosTiradosUsuario ==3)
-                    {                          
-                        this.estadoUsuario = "sinTiros";
-                        return false;
-                   
-                        //Se quedo sin tiros, pero no se paso.
-                    }
-            else if(this.acumUsuario>21 && this.cantDadosTiradosUsuario <=3) 
-                    {
-                        this.estadoUsuario = "perdio";
-                        return false;
-                        //Se paso, perdio.
-                    }
+        this.estadoUsuario = "enCurso"
+        return true; 
+        //Puede seguir tirando. 
 
+            }else if(this.acumUsuario<=21 && this.cantDadosTiradosUsuario ==3)
+        {                          
+            this.estadoUsuario = "sinTiros";
+            return false;
+        
+            //Se quedo sin tiros, pero no se paso.
+        }else if(this.acumUsuario>21 && this.cantDadosTiradosUsuario <=3){
+            this.estadoUsuario = "perdio";
+            return false;
+            //Se paso, perdio.
+        }
                
     }
 
     public verificarIA(){
-       // this.repetidor = setTimeout(()=>{
 
-            this.TirarDadosIA();
+        this.TirarDadosIA();
 
-            if(this.acumIA<21 && this.cantDadosTiradosIA <3 && (this.acumIA <= this.acumUsuario) )
-            {                
-               
-                this.verificarIA();
+        if(this.acumIA<21 && this.cantDadosTiradosIA <3 && (this.acumIA <= this.acumUsuario) )
+        {                
+            
+            this.verificarIA();
 
-            }else if(this.acumIA<=21 && this.cantDadosTiradosIA ==3 && (this.acumIA <= this.acumUsuario))
-                    {                          
-                        this.estadoIA = "sinTiros";                        
-                    }
-            else if(this.acumIA>21 && this.cantDadosTiradosIA ==3)
-                    {                          
-                        this.estadoIA = "IA perdio";                        
-                        
-                    }
-            else if(this.acumIA<=21 && this.cantDadosTiradosIA <=3 && (this.acumIA > this.acumUsuario) )
-                    {
-                        this.estadoIA = "IA gano";                        
-                        return true;                        
-                    };   
-          
-              //      clearTimeout(this.repetidor);
-
-           //     },900);         
-       
-        
+        }else if(this.acumIA<=21 && this.cantDadosTiradosIA ==3 && (this.acumIA <= this.acumUsuario))
+            {                          
+                this.estadoIA = "sinTiros";                        
+            }
+        else if(this.acumIA>21 && this.cantDadosTiradosIA ==3)
+            {                          
+                this.estadoIA = "IA perdio";                        
+                
+            }
+        else if(this.acumIA<=21 && this.cantDadosTiradosIA <=3 && (this.acumIA > this.acumUsuario) )
+            {
+                this.estadoIA = "IA gano";                        
+                return true;                        
+            };   
     }
-
-
-
-
-
 }
