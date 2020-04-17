@@ -46,6 +46,9 @@ export class MenuComponent implements OnInit {
       case 'miJuego':
         this.router.navigate(['/Juegos/Dados']);
       break;
+      default:
+        this.router.navigate(['/Principal']);
+      break;
     }
   }
 
