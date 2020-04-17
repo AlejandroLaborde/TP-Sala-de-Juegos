@@ -14,6 +14,10 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut(){
+    localStorage.removeItem('usuario');
+  }
+
   Juego(tipo: string) {
     switch (tipo) {
       case 'Adivina':

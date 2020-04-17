@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-  constructor() { }
+  logueado=false;
+  constructor() { 
+
+  }
 
   ngOnInit() {
+    if(localStorage.getItem('usuario')=='admin'){
+      this.logueado=true;
+    }
+  }
+
+  logOut(){
+    localStorage.removeItem('usuario');
   }
 
 }

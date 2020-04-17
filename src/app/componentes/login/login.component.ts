@@ -33,15 +33,21 @@ export class LoginComponent implements OnInit {
 
   Entrar() {
     if (this.usuario === 'admin' && this.clave === 'admin') {
+      localStorage.setItem('usuario','admin');
       this.router.navigate(['/Principal']);
     }else{
+      this.logeando=true;
       this.errorLoguin=true;
+      this.progreso=0;
+      this.ProgresoDeAncho="0%";
+
     }
   }
 
   
   MoverBarraDeProgreso() {
-    
+  
+    this.errorLoguin=false;
     this.logeando=false;
     this.clase="progress-bar progress-bar-danger progress-bar-striped active";
     this.progresoMensaje="NSA spy..."; 

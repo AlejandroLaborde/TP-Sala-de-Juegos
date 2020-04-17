@@ -19,8 +19,9 @@
     <ul class="navbar-nav mr-auto">
     </ul>
     <form class="form-inline">
-      <button class="btn btn-outline-success separacion"  routerLink="/Login" type="button">Ingresar</button>
-      <button class="btn btn-outline-danger separacion" routerLink="/Registro" type="button">Registrarse</button>
+      <button *ngIf="!logueado" class="btn btn-outline-success separacion"  routerLink="/Login" type="button">Ingresar</button>
+      <button *ngIf="!logueado" class="btn btn-outline-danger separacion" routerLink="/Registro" type="button">Registrarse</button>
+      <button *ngIf="logueado" class="btn btn-outline-danger separacion" routerLink="/Login" (click)="logOut()" type="button">Salir</button>
     </form>
   </div>
 </nav>
