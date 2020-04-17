@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JugadoresService } from '../../servicios/jugadores.service';
 
 @Component({
   selector: 'app-cabecera',
@@ -8,18 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class CabeceraComponent implements OnInit {
 
   logueado=false;
-  constructor() { 
+  constructor(public jugadoresService:JugadoresService) { 
 
   }
 
   ngOnInit() {
-    if(localStorage.getItem('usuario')=='admin'){
-      this.logueado=true;
-    }
+    this.logueado=this.jugadoresService.logueado();
   }
 
   logOut(){
-    localStorage.removeItem('usuario');
-  }
+    this.jugadoresService.logOut() ;
+ }
 
 }

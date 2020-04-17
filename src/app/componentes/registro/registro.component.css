@@ -9,9 +9,10 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #4CAF50;
+    background-color: green;
     color: white;
     padding: 14px 20px;
+    border-radius: 10px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -21,7 +22,7 @@ button {
 /* Extra styles for the cancel button */
 .cancelbtn {
     padding: 14px 20px;
-    background-color: #f44336;
+    background-color: red;
 }
 
 /* Float cancel and signup buttons and add an equal width */

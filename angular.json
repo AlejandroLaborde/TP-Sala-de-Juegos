@@ -19,7 +19,7 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/miIcono.ico"
             ],
             "styles": [
               "src/styles.css",
@@ -86,7 +86,7 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/miIcono.ico"
             ]
           }
         },
@@ -97,7 +97,7 @@
               "src/tsconfig.app.json",
               "src/tsconfig.spec.json"
             ],
-            "exclude": [
+            "exclude": [ 
               "**/node_modules/**"
             ]
           }

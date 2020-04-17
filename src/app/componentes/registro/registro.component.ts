@@ -32,6 +32,7 @@ export class RegistroComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.terminosYCondiciones();
   }
 
   onSubmit() {
@@ -41,6 +42,10 @@ export class RegistroComponent implements OnInit {
     }else {
       this.formInvalido = true;
     }
+  }
+
+  volverInicio(){
+    this.router.navigate(['/Principal']);
   }
 
   registro( jugador: Jugador ){
@@ -55,5 +60,40 @@ export class RegistroComponent implements OnInit {
     });
     this.router.navigate(['/Login']);
   }
+
+
+  terminosYCondiciones(){
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Terminos y condiciones',
+      text: "El Gobierno de la República Argentina (en adelante el “Gobierno Nacional”) no es responsable por los daños y perjuicios que puedan surgir, incluyendo, sin límite, daños, pérdidas o gastos directos, indirectos, que surjan en relación con el uso de los Activos Digitales o la imposibilidad de uso, en relación con cualquier falla en el vencimiento, error, omisión, interrupción, defecto, demora en la operación o transmisión, virus de computadora o falla del sistema de línea, aún en el caso de que el Gobierno Nacional o sus representantes fueran informados sobre la posibilidad de dichos daños, pérdidas o gastos.El Gobierno Nacional no controla ni garantiza la ausencia de virus ni de otros elementos en los contenidos que puedan producir alteraciones en su sistema informático (software y hardware) o en los documentos electrónicos y ficheros almacenados en su sistema informático.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Acepto',
+      cancelButtonText: 'No Acepto',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        Swal.close();
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        this.volverInicio();
+      }
+    })
+
+
+  }
+
+
 
 }

@@ -13,7 +13,6 @@ export class ArchivosJugadoresService {
   }
 
   public newJugador( jugador: Jugador ){
-    return this.miHttp.http.post(`${environment.firebaseDB}Jugadores.json`, jugador).toPromise();
   }
   
   public   traerJugadores(ruta) {

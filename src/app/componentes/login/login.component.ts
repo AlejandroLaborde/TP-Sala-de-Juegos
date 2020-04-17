@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { JugadoresService } from '../../servicios/jugadores.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private jugadoresService:JugadoresService) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
@@ -32,16 +34,17 @@ export class LoginComponent implements OnInit {
   }
 
   Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
-      localStorage.setItem('usuario','admin');
+   this.jugadoresService.logIn(this.usuario,this.clave).then(resp=>{
+     if(resp){
       this.router.navigate(['/Principal']);
-    }else{
+     }else{
       this.logeando=true;
       this.errorLoguin=true;
       this.progreso=0;
       this.ProgresoDeAncho="0%";
-
-    }
+     }
+   });
+   
   }
 
   

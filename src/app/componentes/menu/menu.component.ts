@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { JugadoresService } from '../../servicios/jugadores.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,14 +10,15 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
+    private jugadoresService: JugadoresService,
     private router: Router) { }
 
   ngOnInit() {
   }
 
   logOut(){
-    localStorage.removeItem('usuario');
-  }
+    this.jugadoresService.logOut(); 
+   }
 
   Juego(tipo: string) {
     switch (tipo) {
