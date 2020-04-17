@@ -1,3 +1,5 @@
+import { JugadoresService } from '../servicios/jugadores.service';
+
 export abstract class Juego {
   public nombre = 'Sin Nombre';
   public jugador: string;
@@ -9,6 +11,7 @@ export abstract class Juego {
 
     if (gano)
       this.gano = gano;
+     
     if(jugador)
       this.jugador=jugador;
     else

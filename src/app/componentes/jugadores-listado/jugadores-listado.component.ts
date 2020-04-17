@@ -10,12 +10,14 @@ export class JugadoresListadoComponent implements OnInit {
   listado:any
   miJugadoresServicio:JugadoresService
   
-    constructor(serviceJugadores:JugadoresService) {
-      this.miJugadoresServicio = serviceJugadores;
-      
+    constructor(private serviceJugadores:JugadoresService) {
+      this.serviceJugadores.getJugadores().subscribe(datos=>{
+        this.listado=datos;
+      },errores=>{
+        console.log(errores);
+      })
     }
     
-
 
   ngOnInit() {
   }
