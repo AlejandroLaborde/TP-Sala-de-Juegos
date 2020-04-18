@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JuegoDados } from '../../clases/juego-dados';
 import Swal from 'sweetalert2';
 import { Jugador } from '../../clases/jugador';
+import { JugadoresService } from '../../servicios/jugadores.service';
 
 @Component({
   selector: 'app-juego-dados',
@@ -23,8 +24,8 @@ export class JuegoDadosComponent implements OnInit {
   
 
 
-  constructor(){
-    this.nuevoJuego = new JuegoDados();
+  constructor( private jugadorServices:JugadoresService){
+    this.nuevoJuego = new JuegoDados(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     this.tirarDados = true;    
   }
 
@@ -85,10 +86,10 @@ export class JuegoDadosComponent implements OnInit {
       text: "No te desanimes! Seguí intentando!"
 
     }).then(()=>{
+      this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
       this.visibilidadComenzar=true;
       this.plantarse = false;
       this.tirarDados = false;
-      this.nuevoJuego.gano=false;
     })
     
   }
@@ -100,10 +101,11 @@ export class JuegoDadosComponent implements OnInit {
       title: 'Ganaste!!! Bien hecho! ',
 
     }).then(()=>{
+      this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
       this.visibilidadComenzar=true;
       this.plantarse = false;
       this.tirarDados = false;
-      this.nuevoJuego.gano=false;
+      
     })
   }
 
@@ -113,7 +115,7 @@ export class JuegoDadosComponent implements OnInit {
   }
 
   comenzar(){
-    this.nuevoJuego = new JuegoDados();
+    this.nuevoJuego = new JuegoDados(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     this.visibilidadComenzar = false
     this.tirarDados = true;    
   }

@@ -10,8 +10,8 @@ export class Tateti extends Juego{
     opcionUsuario: string;
     opcionPC: string;
 
-    constructor(jugador: string) {
-        super('asd',null,jugador);
+    constructor(jugador:string,idJugador:string) {
+        super('TA-TE-TI',jugador,idJugador);
     }
 
     public verificar(): boolean {

@@ -1,6 +1,7 @@
 
 import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoAdivina } from '../../clases/juego-adivina'
+import { JugadoresService } from '../../servicios/jugadores.service';
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -15,10 +16,10 @@ export class AdivinaElNumeroComponent implements OnInit {
   contador:number;
   ocultarVerificar:boolean;
  
-  constructor() { 
-    this.nuevoJuego = new JuegoAdivina();
-    console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
+  constructor(private jugadorServices:JugadoresService) { 
+    this.nuevoJuego = new JuegoAdivina(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     this.ocultarVerificar=false;
+
   }
   generarnumero() {
     this.nuevoJuego.generarnumero();
@@ -33,7 +34,9 @@ export class AdivinaElNumeroComponent implements OnInit {
       
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje("Sos un Genio!!!",true);
+      this.nuevoJuego.gano=true;
       this.nuevoJuego.numeroSecreto=0;
+      this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
 
     }else{
 

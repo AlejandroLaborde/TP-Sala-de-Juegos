@@ -1,25 +1,18 @@
-import { JugadoresService } from '../servicios/jugadores.service';
 
 export abstract class Juego {
   public nombre = 'Sin Nombre';
   public jugador: string;
+  public idJugador: string;
   public gano = false;
 
-  constructor(nombre?: string, gano?: boolean,jugador?:string) {
-    if (nombre)
+  constructor(nombre: string ,jugador:string, idJugador:string,gano?: boolean) {
+    
       this.nombre = nombre;
-
-    if (gano)
-      this.gano = gano;
-     
-    if(jugador)
       this.jugador=jugador;
-    else
-      this.jugador= "natalia natalia";
+      this.idJugador= idJugador;
+      if (gano) this.gano = gano;
+    
   }
-
-
-  
 
   public abstract verificar():boolean; 
   

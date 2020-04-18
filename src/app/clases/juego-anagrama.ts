@@ -8,9 +8,9 @@ export class JuegoAnagrama extends Juego{
     palabraIngresada: string;
     intentos:number;
 
-    constructor ( intentos:number ){
+    constructor ( intentos:number,jugador:string,idJugador:string){
 
-        super('Anagrama', false);
+        super('Anagrama', jugador,idJugador);
         this.intentos = intentos;
         this.palabraAOrdenar = this.getPalabraAOrdenar();
     }

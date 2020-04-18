@@ -7,8 +7,8 @@ export class JuegoPiedraPapelTijera extends Juego {
     public eleccionJugador: string;
     public eleccionPC: string;
  
-    constructor( jugador: string) {
-        super('PPT', false, jugador);
+    constructor( jugador:string,idJugador:string) {
+        super('PPT', jugador,idJugador);
         this.eleccionAleatoreaPC();
 
     }

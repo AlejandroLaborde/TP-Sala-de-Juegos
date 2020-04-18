@@ -20,9 +20,9 @@ export class JuegoDados extends Juego {
 
     repetidor: any;
 
-    constructor( )
+    constructor(jugador:string,idJugador:string )
     {
-        super("Juego 21 con Dados");
+        super("Juego 21 con Dados",jugador,idJugador);
         this.acumUsuario=0;
         this.acumIA = 0;
     
@@ -67,17 +67,20 @@ export class JuegoDados extends Juego {
         if(this.acumUsuario<=21 && this.cantDadosTiradosUsuario <3){
                 
         this.estadoUsuario = "enCurso"
+        this.gano=true;
         return true; 
         //Puede seguir tirando. 
 
             }else if(this.acumUsuario<=21 && this.cantDadosTiradosUsuario ==3)
         {                          
             this.estadoUsuario = "sinTiros";
+            this.gano=false;
             return false;
         
             //Se quedo sin tiros, pero no se paso.
         }else if(this.acumUsuario>21 && this.cantDadosTiradosUsuario <=3){
             this.estadoUsuario = "perdio";
+            this.gano=false;
             return false;
             //Se paso, perdio.
         }
@@ -95,16 +98,19 @@ export class JuegoDados extends Juego {
 
         }else if(this.acumIA<=21 && this.cantDadosTiradosIA ==3 && (this.acumIA <= this.acumUsuario))
             {                          
-                this.estadoIA = "sinTiros";                        
+                this.estadoIA = "sinTiros";
+                this.gano=true;                        
             }
         else if(this.acumIA>21 && this.cantDadosTiradosIA ==3)
             {                          
-                this.estadoIA = "IA perdio";                        
+                this.estadoIA = "IA perdio";
+                this.gano=true;                       
                 
             }
         else if(this.acumIA<=21 && this.cantDadosTiradosIA <=3 && (this.acumIA > this.acumUsuario) )
             {
-                this.estadoIA = "IA gano";                        
+                this.estadoIA = "IA gano";
+                this.gano=false;                        
                 return true;                        
             };   
     }

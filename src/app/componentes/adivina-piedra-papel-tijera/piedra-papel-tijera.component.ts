@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
 import Swal from 'sweetalert2';
+import { JugadoresService } from '../../servicios/jugadores.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   seleccionadoPapelPC;
   seleccionadoPiedraPC;
 
-  constructor() { }
+  constructor(private jugadorServices: JugadoresService) { }
 
   ngOnInit(): void {
     
@@ -30,7 +31,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
 
   comenzar(){
     this.visibilidadesDefault();
-    this.juego= new JuegoPiedraPapelTijera('natalia natalia');
+    this.juego= new JuegoPiedraPapelTijera(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     this.nuevoJuego=false;
   }
 
@@ -65,6 +66,8 @@ export class PiedraPapelTijeraComponent implements OnInit {
           text: "No te desanimes! Seguí intentando!"
         }).then(()=>{this.nuevoJuego=true})
       }
+      this.jugadorServices.updateJugador(this.juego.idJugador,this.juego.gano);
+
     }
   
 

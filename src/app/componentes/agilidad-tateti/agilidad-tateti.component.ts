@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tateti } from '../../clases/juego-tateti';
 import Swal from 'sweetalert2';
+import { JugadoresService } from '../../servicios/jugadores.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AgilidadTatetiComponent implements OnInit {
   band : boolean;
   nombreJugador : string;
 
-  constructor() {
+  constructor(private jugadorServices: JugadoresService) {
     
   }
 
@@ -82,6 +83,7 @@ export class AgilidadTatetiComponent implements OnInit {
             text: "No te desanimes! Seguí intentando!"
           }).then(()=>{this.visibilidadComenzar=true})
         }
+        this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
       }
     }
     else
@@ -126,6 +128,8 @@ export class AgilidadTatetiComponent implements OnInit {
                 text: "No te desanimes! Seguí intentando!"
               }).then(()=>{this.visibilidadComenzar=true})
             }
+            this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
+
           }
       } 
        
@@ -137,7 +141,7 @@ export class AgilidadTatetiComponent implements OnInit {
 
   comenzar()
   {
-    this.nuevoJuego = new Tateti('asd');
+    this.nuevoJuego = new Tateti(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     this.visibilidadComenzar = false;
     this.band=false;
     this.terminoJuego = false;

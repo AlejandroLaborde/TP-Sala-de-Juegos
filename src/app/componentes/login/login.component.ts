@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import { JugadoresService } from '../../servicios/jugadores.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
 
   Entrar() {
    this.jugadoresService.logIn(this.usuario,this.clave).then(resp=>{
+     console.log(resp);
      if(resp){
       this.router.navigate(['/Principal']);
      }else{
@@ -43,6 +45,11 @@ export class LoginComponent implements OnInit {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
      }
+   }).catch(error=>{
+     Swal.fire({
+       title:'Ops! Algo salio mal, intenta en unos momentos',
+       icon: 'error'
+     })
    });
    
   }

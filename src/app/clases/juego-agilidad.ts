@@ -10,8 +10,8 @@ export class JuegoAgilidad extends Juego{
     private resultado: number;
 
 
-    constructor(){
-        super('Agilidad',false);
+    constructor(jugador:string,idJugador:string) {
+        super('Agilidad',jugador,idJugador);
         this.seteaValoresJuego(this.getRandomOperator());
     }
 

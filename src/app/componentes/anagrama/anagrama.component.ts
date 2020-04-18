@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoAnagrama } from '../../clases/juego-anagrama';
 import Swal from 'sweetalert2';
+import { JugadoresService } from '../../servicios/jugadores.service';
 
 
 @Component({
@@ -14,8 +15,8 @@ export class AnagramaComponent implements OnInit {
   nuevoJuego = true;
   mensajeError=false;
 
-  constructor() { 
-    this.juego=new JuegoAnagrama(3);
+  constructor(private jugadorServices:JugadoresService) { 
+    this.juego=new JuegoAnagrama(3,this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     
   }
 
@@ -23,7 +24,7 @@ export class AnagramaComponent implements OnInit {
   }
 
   nuevaPalabra(){
-    this.juego = new JuegoAnagrama(3);
+    this.juego = new JuegoAnagrama(3,this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     this.nuevoJuego = false;
   }
 
@@ -39,7 +40,6 @@ export class AnagramaComponent implements OnInit {
         iconHtml:'<i class="fa fa-thumbs-up"></i>',
         title: 'Felicidades, ha gandado!'
       });
-      this.resetearValores();
     }else {
       this.visibilidadMensajeError();
       if ( this.juego.intentos === 0 ) {
@@ -49,10 +49,12 @@ export class AnagramaComponent implements OnInit {
           title: 'Oops!! has fallado!',
           text: 'No te desanimes! Seguí intentando!'
         });
-        this.resetearValores();
       }
     }
+    this.jugadorServices.updateJugador(this.juego.idJugador,this.juego.gano);
     this.juego.palabraIngresada="";
+    this.resetearValores();
+
   }
 
   visibilidadMensajeError(){

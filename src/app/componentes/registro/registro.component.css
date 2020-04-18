@@ -1,6 +1,15 @@
+.imagen{
+    background-image: url('../../../assets/imagenes/signIn.jpg');
+    height: 100vh;
+}
+.centrar{
+    justify-content: center;
+    display: flex;
+}
+
 input[type=text], input[type=password] {
     width: 100%;
-    padding: 12px 20px;
+    padding: 6px 10px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -33,6 +42,12 @@ button {
     padding: 16px;
 }
 
+.formulario{
+    background-color: cornsilk;
+    max-width: 500px;
+    display: inline-block;
+    border-radius: 5px;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

@@ -3,6 +3,7 @@ import { JuegoAgilidad } from '../../clases/juego-agilidad'
 
 import {Subscription} from "rxjs";
 import Swal from 'sweetalert2';
+import { JugadoresService } from '../../servicios/jugadores.service';
 @Component({
   selector: 'app-agilidad-aritmetica',
   templateUrl: './agilidad-aritmetica.component.html',
@@ -22,17 +23,18 @@ export class AgilidadAritmeticaComponent implements OnInit {
     
   }
 
-   constructor() {
+   constructor(private jugadorServices: JugadoresService) {
 
     this.ocultarVerificar=true;
     this.Tiempo=5; 
-    this.nuevoJuego = new JuegoAgilidad();
+    this.nuevoJuego = new JuegoAgilidad(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
+    console.log(this.jugadorServices.activeJugador);
 
   }
 
   NuevoJuego() {
 
-      this.nuevoJuego = new JuegoAgilidad();
+      this.nuevoJuego = new JuegoAgilidad(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
       console.log(this.nuevoJuego);
       this.ocultarVerificar=false;
       this.repetidor = setInterval(()=>{ 
@@ -63,10 +65,9 @@ export class AgilidadAritmeticaComponent implements OnInit {
         iconHtml:'<i class="fa fa-thumbs-down"></i>',
         title: 'Oops!! has fallado!',
         text: "No te desanimes! Seguí intentando!"
-        
       })
     }
-
+    this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
   }  
