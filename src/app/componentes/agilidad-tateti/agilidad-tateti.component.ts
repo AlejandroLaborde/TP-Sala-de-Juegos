@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tateti } from '../../clases/juego-tateti';
 import Swal from 'sweetalert2';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { JuegoServiceService } from '../../servicios/juego-service.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class AgilidadTatetiComponent implements OnInit {
   band : boolean;
   nombreJugador : string;
 
-  constructor(private jugadorServices: JugadoresService) {
+  constructor(private jugadorServices: JugadoresService, private juegoService:JuegoServiceService) {
     
   }
 
@@ -68,6 +69,8 @@ export class AgilidadTatetiComponent implements OnInit {
           title: 'Empate!! Vuelve a jugar!',
   
         }).then(()=>{this.visibilidadComenzar=true})
+        this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
+        this.juegoService.postJuego(this.nuevoJuego).subscribe(()=>{});
       }else{
         if(this.nuevoJuego.verificar()){
           Swal.fire({
@@ -84,6 +87,7 @@ export class AgilidadTatetiComponent implements OnInit {
           }).then(()=>{this.visibilidadComenzar=true})
         }
         this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
+        this.juegoService.postJuego(this.nuevoJuego).subscribe(()=>{});
       }
     }
     else

@@ -11,11 +11,7 @@ export class JugadoresListadoComponent implements OnInit {
   miJugadoresServicio:JugadoresService
   
     constructor(private serviceJugadores:JugadoresService) {
-      this.serviceJugadores.getJugadores().subscribe(datos=>{
-        this.listado=datos;
-      },errores=>{
-        console.log(errores);
-      })
+      this.TraerTodos();
     }
     
 
@@ -29,25 +25,32 @@ export class JugadoresListadoComponent implements OnInit {
 
 
   TraerTodos(){
-    //alert("totos");
-    this.miJugadoresServicio.traertodos('jugadores/','todos').then(data=>{
-      //console.info("jugadores listado",(data));
-      this.listado= data;
-
+    this.serviceJugadores.getJugadores().subscribe(datos=>{
+      this.listado=datos;
+      console.log(datos);
+    },errores=>{
+      console.log(errores);
     })
   }
+
   TraerGanadores(){
-    this.miJugadoresServicio.traertodos('jugadores/','ganadores').then(data=>{
-      //console.info("jugadores listado",(data));
-      this.listado= data;
+    console.log("ganadores");
+    this.serviceJugadores.getGanadores().subscribe(datos=>{
+      this.listado=datos;
+      console.log(datos);
 
+    },errores=>{
+      console.log(errores);
     })
   }
-  TraerPerdedores(){
-    this.miJugadoresServicio.traertodos('jugadores/','perdedores').then(data=>{
-      //console.info("jugadores listado",(data));
-      this.listado= data;
 
+  TraerPerdedores(){
+    this.serviceJugadores.getPerdedores().subscribe(datos=>{
+      this.listado=datos;
+      console.log(datos);
+      console.log("volvio");
+    },errores=>{
+      console.log(errores);
     })
   }
 

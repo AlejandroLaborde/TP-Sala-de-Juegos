@@ -1,56 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Juego } from '../clases/juego';
-import { JuegoAdivina } from '../clases/juego-adivina';
 import { MiHttpService } from './mi-http/mi-http.service'; 
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
+import { JuegResultados } from '../clases/juego-resultados';
+import { Juego } from '../clases/juego';
 
 @Injectable()
 export class JuegoServiceService {
 
-  peticion:any;
-  constructor( public miHttp: MiHttpService ) {
-    this.peticion = this.miHttp.httpGetO("http://localhost:3003");
-//    this.peticion = this.miHttp.httpGetO("https://restcountries.eu/rest/v2/all");
+  constructor(  private httpclient:HttpClient ) {
+    
+
   }
 
-  public listar(): Array<Juego> {
-   this.miHttp.httpGetP("https://restcountries.eu/rest/v2/all")
-    .then( data => {
-      console.log( data );
-    })
-    .catch( err => {
-      console.log( err );
-    });
-   
-  
-    this.peticion
-    .subscribe( data => {
-      console.log("En listar");
-      console.log( data );
-    }, err => {
-      console.info("error: " ,err );
-    })
-
-    let miArray: Array<Juego> = new Array<Juego>();
-
-   
-    return miArray;
+  public postJuego( juego: Juego ){
+    return this.httpclient.post(`${environment.firebaseDB}/juegos.json`, juego);
   }
 
-  public listarPromesa(): Promise<Array<Juego>> {
-    this.peticion
-    .subscribe( data => {
-      console.log("En listarPromesa");
-      console.log( data );
-    }, err => {
-      console.log( err );
-    })
-    let promesa: Promise<Array<Juego>> = new Promise((resolve, reject) => {
-      let miArray: Array<Juego> = new Array<Juego>();
-      
-      resolve(miArray);
-    });
-
-    return promesa;
+  public getJuegos(){
+    return this.httpclient.get(`${environment.firebaseDB}/juegos.json`).pipe(map( datos => this.objecToArray(datos)));
   }
 
+  private objecToArray( datos: Object ){
+    const juegos : JuegResultados[] = [];
+    if(datos == null) return [];
+
+    Object.keys( datos ).forEach( key =>{
+      console.log(key);
+          let juego: any = datos[key];
+          juegos.push(juego);
+        
+    })
+    return juegos;
+  }
 }

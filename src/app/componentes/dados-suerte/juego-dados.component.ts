@@ -3,6 +3,7 @@ import { JuegoDados } from '../../clases/juego-dados';
 import Swal from 'sweetalert2';
 import { Jugador } from '../../clases/jugador';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { JuegoServiceService } from '../../servicios/juego-service.service';
 
 @Component({
   selector: 'app-juego-dados',
@@ -24,7 +25,7 @@ export class JuegoDadosComponent implements OnInit {
   
 
 
-  constructor( private jugadorServices:JugadoresService){
+  constructor( private jugadorServices:JugadoresService, private juegoService:JuegoServiceService){
     this.nuevoJuego = new JuegoDados(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     this.tirarDados = true;    
   }
@@ -87,6 +88,7 @@ export class JuegoDadosComponent implements OnInit {
 
     }).then(()=>{
       this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
+      this.juegoService.postJuego(this.nuevoJuego).subscribe(()=>{});
       this.visibilidadComenzar=true;
       this.plantarse = false;
       this.tirarDados = false;
@@ -102,6 +104,7 @@ export class JuegoDadosComponent implements OnInit {
 
     }).then(()=>{
       this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
+      this.juegoService.postJuego(this.nuevoJuego).subscribe(()=>{});
       this.visibilidadComenzar=true;
       this.plantarse = false;
       this.tirarDados = false;

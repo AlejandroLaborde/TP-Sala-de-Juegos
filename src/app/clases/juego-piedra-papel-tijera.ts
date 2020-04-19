@@ -21,12 +21,15 @@ export class JuegoPiedraPapelTijera extends Juego {
     public verificar(): boolean {
         console.log( this.eleccionJugador +"-"+ this.eleccionPC );
         if ( this.eleccionJugador === 'piedra' && this.eleccionPC === 'piedra' ) {
+            this.gano=null;
             return null;
         }
         if ( this.eleccionJugador === 'papel' && this.eleccionPC === 'papel' ) {
+            this.gano=null;
             return null;
         }
         if ( this.eleccionJugador === 'tijera' && this.eleccionPC === 'tijera' ) {
+            this.gano=null;
             return null;
         }
 

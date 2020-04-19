@@ -1,0 +1,7 @@
+.titulo{
+    color: aqua;
+    display: flex;
+    font-family: cursive;
+    justify-content: center;
+    padding: 10px;
+}

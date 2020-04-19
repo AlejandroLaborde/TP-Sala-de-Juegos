@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
 import Swal from 'sweetalert2';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { JuegoServiceService } from '../../servicios/juego-service.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   seleccionadoPapelPC;
   seleccionadoPiedraPC;
 
-  constructor(private jugadorServices: JugadoresService) { }
+  constructor(private jugadorServices: JugadoresService, private juegoService:JuegoServiceService) { }
 
   ngOnInit(): void {
     
@@ -48,7 +49,11 @@ export class PiedraPapelTijeraComponent implements OnInit {
         iconHtml:'<i class="fa fa-thumbs-up"></i>',
         title: 'Empate!! Vuelve a jugar!',
 
-      }).then(()=>{this.nuevoJuego=true})
+      }).then(()=>{
+        this.nuevoJuego=true;
+      })
+      this.juegoService.postJuego(this.juego).subscribe(()=>{});
+
     }else{
       if(this.juego.verificar()){
         Swal.fire({
@@ -67,7 +72,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
         }).then(()=>{this.nuevoJuego=true})
       }
       this.jugadorServices.updateJugador(this.juego.idJugador,this.juego.gano);
-
+      this.juegoService.postJuego(this.juego).subscribe(()=>{});
     }
   
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JuegoServiceService } from '../../servicios/juego-service.service';
 
 
 @Component({
@@ -11,9 +12,14 @@ export class PrincipalComponent implements OnInit {
     isFirstOpen: true,
     isFirstDisabled: false
   };
-  constructor() {  }
+  constructor( private juegoService:JuegoServiceService ) {  }
 
   ngOnInit() {
+
+    this.juegoService.getJuegos().subscribe((asd)=>{
+      console.log(asd);
+    });
+
   }
 
  

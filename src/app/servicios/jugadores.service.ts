@@ -3,7 +3,7 @@ import { ArchivosJugadoresService}from './archivos-jugadores.service'
 import { Jugador } from '../clases/jugador';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 @Injectable()
 export class JugadoresService {
 
@@ -26,6 +26,16 @@ export class JugadoresService {
     return this.httpClient.get(`${environment.firebaseDB}Jugadores.json`).pipe(map( datos => this.objecToArray(datos)));
   }
   
+  public getGanadores(){
+    return this.httpClient.get(`${environment.firebaseDB}Jugadores.json`).pipe(
+      map( datos => this.filtraGanadores(datos)))
+  }
+  
+  public getPerdedores(){
+    return this.httpClient.get(`${environment.firebaseDB}Jugadores.json`).pipe(
+      map( datos => this.filtraPerdedores(datos))
+    );
+  }
   public logOut( ) {
     this.activeJugador=null;
   } 
@@ -46,8 +56,13 @@ export class JugadoresService {
   public updateJugador(id:string , gano:boolean ){
     console.log(id + " " + gano);
     this.getJugador(id).subscribe( (jugador:any)=>{
-      jugador.gano=gano;
-      console.log(jugador);
+      if(gano==null)
+      {
+        jugador = new Jugador(jugador.email,jugador.sexo,jugador.cuit,jugador.clave);
+      }else{
+        jugador.gano=gano;
+      }
+     
       this.httpClient.put(`${environment.firebaseDB}Jugadores/${id}.json`,jugador).subscribe(()=>{});
     })
     
@@ -61,6 +76,36 @@ export class JugadoresService {
     {
       return true;
     }
+  }
+
+  private filtraPerdedores( datos: Object ){
+    const jugadores : any[] = [];
+    if(datos == null) return [];
+
+    Object.keys( datos ).forEach( key =>{
+        let jugador: Jugador = datos[key];
+        jugador.id=key;
+        if(!jugador.gano){
+
+          jugadores.push(jugador);
+        }
+    })
+    return jugadores;
+  }
+
+  private filtraGanadores( datos: Object ){
+    const jugadores : any[] = [];
+    if(datos == null) return [];
+
+    Object.keys( datos ).forEach( key =>{
+        let jugador: Jugador = datos[key];
+        jugador.id=key;
+        if(jugador.gano){
+
+          jugadores.push(jugador);
+        }
+    })
+    return jugadores;
   }
 
 

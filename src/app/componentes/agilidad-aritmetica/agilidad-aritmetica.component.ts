@@ -4,14 +4,14 @@ import { JuegoAgilidad } from '../../clases/juego-agilidad'
 import {Subscription} from "rxjs";
 import Swal from 'sweetalert2';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { JuegoServiceService } from '../../servicios/juego-service.service';
 @Component({
   selector: 'app-agilidad-aritmetica',
   templateUrl: './agilidad-aritmetica.component.html',
   styleUrls: ['./agilidad-aritmetica.component.css']
 })
 export class AgilidadAritmeticaComponent implements OnInit {
-   @Output() 
-  enviarJuego :EventEmitter<any>= new EventEmitter<any>();
+   @Output() enviarJuego :EventEmitter<any>= new EventEmitter<any>();
   nuevoJuego : JuegoAgilidad;
   ocultarVerificar: boolean;
   Tiempo: number;
@@ -23,13 +23,13 @@ export class AgilidadAritmeticaComponent implements OnInit {
     
   }
 
-   constructor(private jugadorServices: JugadoresService) {
+   constructor(private jugadorServices: JugadoresService, private juegoService:JuegoServiceService) {
 
     this.ocultarVerificar=true;
     this.Tiempo=5; 
     this.nuevoJuego = new JuegoAgilidad(this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     console.log(this.jugadorServices.activeJugador);
-
+ 
   }
 
   NuevoJuego() {
@@ -67,7 +67,9 @@ export class AgilidadAritmeticaComponent implements OnInit {
         text: "No te desanimes! Seguí intentando!"
       })
     }
+    this.enviarJuego.emit(this.nuevoJuego);
     this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
+      this.juegoService.postJuego(this.nuevoJuego).subscribe(()=>{});
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
   }  

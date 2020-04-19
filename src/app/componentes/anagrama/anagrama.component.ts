@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JuegoAnagrama } from '../../clases/juego-anagrama';
 import Swal from 'sweetalert2';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { JuegoServiceService } from '../../servicios/juego-service.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AnagramaComponent implements OnInit {
   nuevoJuego = true;
   mensajeError=false;
 
-  constructor(private jugadorServices:JugadoresService) { 
+  constructor(private jugadorServices:JugadoresService, private juegoService:JuegoServiceService) { 
     this.juego=new JuegoAnagrama(3,this.jugadorServices.getUsuarioActual(),this.jugadorServices.getIdActual());
     
   }
@@ -52,6 +53,7 @@ export class AnagramaComponent implements OnInit {
       }
     }
     this.jugadorServices.updateJugador(this.juego.idJugador,this.juego.gano);
+    this.juegoService.postJuego(this.juego).subscribe(()=>{});
     this.juego.palabraIngresada="";
     this.resetearValores();
 
