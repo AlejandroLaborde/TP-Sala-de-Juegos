@@ -66,7 +66,7 @@ export class AgilidadTatetiComponent implements OnInit {
         Swal.fire({
           icon:'warning',
           iconHtml:'<i class="fa fa-thumbs-up"></i>',
-          title: 'Empate!! Vuelve a jugar!',
+          title: 'No hay ganador!! Vuelve a jugar!',
   
         }).then(()=>{this.visibilidadComenzar=true})
         this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);

@@ -3,6 +3,8 @@ import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoAdivina } from '../../clases/juego-adivina'
 import { JugadoresService } from '../../servicios/jugadores.service';
 import { JuegoServiceService } from '../../servicios/juego-service.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -33,40 +35,64 @@ export class AdivinaElNumeroComponent implements OnInit {
     console.info("numero Secreto:",this.nuevoJuego.gano);  
     if (this.nuevoJuego.verificar()){
       
+      Swal.fire({
+        icon:'success',
+        iconHtml:'<i class="fa fa-thumbs-up"></i>',
+        title: 'Felicidades, ha gandado!'
+      })
       this.enviarJuego.emit(this.nuevoJuego);
-      this.MostarMensaje("Sos un Genio!!!",true);
+      //this.MostarMensaje("Sos un Genio!!!",true);
       this.nuevoJuego.gano=true;
       this.nuevoJuego.numeroSecreto=0;
       this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
       this.juegoService.postJuego(this.nuevoJuego).subscribe(()=>{});
     }else{
 
-      let mensaje:string;
-      switch (this.contador) {
-        case 1:
-          mensaje="No, intento fallido, animo";
-          break;
-          case 2:
-          mensaje="No,Te estaras Acercando???";
-          break;
-          case 3:
-          mensaje="No es, Yo crei que la tercera era la vencida.";
-          break;
-          case 4:
-          mensaje="No era el  "+this.nuevoJuego.numeroIngresado;
-          break;
-          case 5:
-          mensaje=" intentos y nada.";
-          break;
-          case 6:
-          mensaje="Afortunado en el amor";
-          break;
-      
-        default:
-            mensaje="Ya le erraste "+ this.contador+" veces";
-          break;
+      if(this.contador == 5){
+        
+        Swal.fire({
+          icon: "error",
+          iconHtml:'<i class="fa fa-thumbs-down"></i>',
+          title: 'Oops!! has fallado!',
+          text: "No te desanimes! Seguí intentando!"
+        })
+        this.contador=0;
+        this.enviarJuego.emit(this.nuevoJuego);
+        //this.MostarMensaje("Perdiste",false);
+        this.nuevoJuego.gano=false;
+        this.nuevoJuego.numeroSecreto=0;
+        this.jugadorServices.updateJugador(this.nuevoJuego.idJugador,this.nuevoJuego.gano);
+        this.juegoService.postJuego(this.nuevoJuego).subscribe(()=>{});
+
+      }else{
+        let mensaje:string;
+        switch (this.contador) {
+          case 1:
+            mensaje="No, intento fallido, animo";
+            break;
+            case 2:
+            mensaje="No,Te estaras Acercando???";
+            break;
+            case 3:
+            mensaje="No es, Yo crei que la tercera era la vencida.";
+            break;
+            case 4:
+            mensaje="No era el  "+this.nuevoJuego.numeroIngresado;
+            break;
+            case 5:
+            mensaje=" intentos y nada.";
+            break;
+            case 6:
+            mensaje="Afortunado en el amor";
+            break;
+        
+          default:
+              mensaje="Ya le erraste "+ this.contador+" veces";
+            break;
+        }
+        this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
       }
-      this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
+     
      
 
     }

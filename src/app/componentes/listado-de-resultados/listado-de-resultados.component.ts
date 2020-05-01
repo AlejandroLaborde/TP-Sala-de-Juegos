@@ -8,8 +8,8 @@ import { JuegoServiceService } from '../../servicios/juego-service.service';
   styleUrls: ['./listado-de-resultados.component.css']
 })
 export class ListadoDeResultadosComponent implements OnInit {
- @Input() listado: Array<any>;
 
+ @Input() listado: Array<any>;
 
   constructor( private juegoServices: JuegoServiceService) {
   

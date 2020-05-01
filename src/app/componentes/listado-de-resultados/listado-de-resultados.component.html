@@ -13,7 +13,8 @@
         <td>{{juego.nombre}} </td>
         <td>{{juego.jugador}} </td> 
         <td *ngIf="juego.gano"> <button class="btn btn-success" disabled><i class="fa fa-check"></i> </button> </td>   
-        <td *ngIf="!juego.gano"><button class="btn btn-danger" disabled><i class="fa fa-times"></i> </button></td>     
+        <td *ngIf="juego.gano==false"><button class="btn btn-danger" disabled><i class="fa fa-times"></i> </button></td>     
+        <td *ngIf="juego.gano==null"><button class="btn btn-warning" disabled><i class="fa fa-flag"></i> </button></td> 
       </tr>
      
     </tbody>

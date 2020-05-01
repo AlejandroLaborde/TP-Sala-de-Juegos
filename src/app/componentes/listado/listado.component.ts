@@ -7,12 +7,14 @@ import { JuegoServiceService } from '../../servicios/juego-service.service';
   styleUrls: ['./listado.component.css']
 })
 export class ListadoComponent implements OnInit {
-  public listadoParaCompartir: Array<any>;
-   miServicioJuego:JuegoServiceService
 
-  constructor(servicioJuego:JuegoServiceService) {
-    this.miServicioJuego = servicioJuego;
-    
+
+  public listadoJuegos: Array<any>;
+
+  constructor(private juegoServices:JuegoServiceService ) {
+    this.juegoServices.getJuegos().subscribe( resp=>{
+      this.listadoJuegos=resp;
+    })
   }
   
   ngOnInit() {
